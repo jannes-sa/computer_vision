@@ -1,0 +1,44 @@
+Docs = 
+https://docs.ultralytics.com/modes/train/#apple-m1-and-m2-mps-training
+https://blog.roboflow.com/how-to-train-yolov8-on-a-custom-dataset/
+
+To train custom datasets
+$ yolo task=detect \      
+mode=train \
+model=yolov8m.pt \
+data=/Users/user/work/experiment/computer_vision/yolo/custom_data_sets/custom_data_gender_de/data.yaml \
+epochs=100 \
+imgsz=640 \
+device=0
+
+$ yolo task=detect \
+mode=train \
+model=yolov8m.pt \
+data=/home/ubuntu/work/experiment/computer_vision/yolo/custom_data_sets/GEO-Solar/data.yaml \
+epochs=100 \
+imgsz=640 \
+device=0
+
+
+To Validate custom datasets
+$ yolo task=detect \
+mode=val \
+model=/Users/jannessantoso/work/experiment/computer_vision/yolo/custom_data_sets/GEO-Solar/results/geo-solar/weights/best.pt \
+data=/Users/jannessantoso/work/experiment/computer_vision/yolo/custom_data_sets/GEO-Solar/data.yaml \
+device=mps
+
+To Predict
+$ yolo detect predict \
+model=/Users/jannessantoso/work/experiment/computer_vision/yolo/custom_data_sets/GEO-Solar/results/geo-solar/weights/best.pt \
+conf=0.25 \
+source=/Users/jannessantoso/work/experiment/computer_vision/yolo/custom_data_sets/GEO-Solar/test/images \
+device=mps
+
+
+To Resume
+$ yolo train resume model=/opt/homebrew/runs/detect/train8/weights/last.pt device=mps
+
+To Download from VM
+$ scp -r -i jannes-key-pem-singapore.pem \
+ec2-user@ec2-18-140-53-85.ap-southeast-1.compute.amazonaws.com:/home/ec2-user/work/experiment/computer_vision/yolo/custom_data_sets/GEO-Solar/results/geo-solar \
+/Users/jannessantoso/work/experiment/computer_vision/yolo/custom_data_sets/GEO-Solar/results

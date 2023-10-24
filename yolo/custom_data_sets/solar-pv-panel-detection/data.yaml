@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['solar-pv-panel']
+
+roboflow:
+  workspace: whereareyousolarpanel
+  project: solar-pv-panel-detection
+  version: 5
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/whereareyousolarpanel/solar-pv-panel-detection/dataset/5

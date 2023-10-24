@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['Non_single', 'Single']
+
+roboflow:
+  workspace: saurabh-qhqvb
+  project: ff-3ttwc
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/saurabh-qhqvb/ff-3ttwc/dataset/1

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polygon Drawer</title>
+    <style>
+        canvas { border: 1px solid black; }
+    </style>
+</head>
+<body>
+    <input type="file" id="upload" />
+    <button id="clear">Clear All</button>
+    <button id="undo">Undo Last Polygon</button>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        let points = [];
+        let allPolygons = [];
+
+        document.getElementById('upload').addEventListener('change', function(evt){
+            let file = evt.target.files[0];
+            let reader = new FileReader();
+            reader.onload = function(event){
+                let img = new Image();
+                img.onload = function(){
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        });
+
+        document.getElementById('clear').addEventListener('click', function() {
+            // Clear the canvas and reset points & allPolygons arrays
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            points = [];
+            allPolygons = [];
+        });
+
+        document.getElementById('undo').addEventListener('click', function() {
+            if (allPolygons.length > 0) {
+                allPolygons.pop();
+                // Redraw the canvas without the last polygon
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let polygon of allPolygons) {
+                    drawPolygon(polygon);
+                }
+            }
+        });
+
+        function drawPolygon(polygon) {
+            ctx.beginPath();
+            ctx.moveTo(polygon[0].x, polygon[0].y);
+            for (let pt of polygon) {
+                ctx.lineTo(pt.x, pt.y);
+            }
+            ctx.closePath();
+            ctx.fillStyle = "rgba(0, 255, 0, 0.3)";  // Transparent green
+            ctx.fill();
+            ctx.strokeStyle = "red";
+            ctx.stroke();
+        }
+
+        canvas.addEventListener('click', function(event) {
+            let rect = canvas.getBoundingClientRect();
+            let x = event.clientX - rect.left;
+            let y = event.clientY - rect.top;
+            points.push({x, y});
+            ctx.fillStyle = "red";
+            ctx.fillRect(x-2.5, y-2.5, 5, 5);
+
+            if (points.length > 2) {
+                let closeEnough = Math.abs(points[0].x - x) < 10 && Math.abs(points[0].y - y) < 10;
+                if (closeEnough) {
+                    allPolygons.push([...points]); // Store a copy of the points
+                    drawPolygon(points);
+                    console.log(points);
+                    points = [];
+                }
+            }
+        });
+    </script>
+</body>
+</html>

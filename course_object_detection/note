@@ -1,0 +1,10 @@
+-- install anaconda https://www.anaconda.com/
+$ conda --version (make sure properly install)
+$ conda create -n pysource_objet_detection python=3.9 (for this course we using python 3.9)
+$ conda env list
+$ conda activate pysource_objet_detection
+$ conda install ipywidgets notebook
+$ pip install -r requirement.txt
+
+-- If you have the mac with the M1 or M2 processor, you can increase the GPU power with this command
+$ pip install --upgrade torch==2.0.0 torchvision
