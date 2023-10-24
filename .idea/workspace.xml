@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59e1336c-7f73-4f1e-8e31-5ef61e8a17f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/yolo/yolov8_segmentation/source_code/yolov8m-seg.pt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_object_detection/note" beforeDir="false" afterPath="$PROJECT_DIR$/course_object_detection/note" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
