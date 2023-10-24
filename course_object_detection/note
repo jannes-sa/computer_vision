@@ -9,8 +9,9 @@ $ pip install -r requirement.txt
 -- If you have the mac with the M1 or M2 processor, you can increase the GPU power with this command
 $ pip install --upgrade torch==2.0.0 torchvision
 
--- tips to improve detection --
+-- tips to improve detection accuracy --
 1. increase imgSize when detect (cons => reduce performance)
 2. use bigger pretrain model complexity (cons => reduce performance)
 3. crop frame (cons => reduce frame)
 4. create custom model
+5. add more datasets to train
