@@ -8,11 +8,16 @@ od = ObjectDetection("dnn_model/yolov8m.pt")
 od.load_class_names("dnn_model/classes.txt")
 
 # 2. Load Image
-cap = cv2.VideoCapture("demo/crowd.mp4")
+cap = cv2.VideoCapture("../../../../data/highway_traffic.mp4")
+# cap = cv2.VideoCapture("../data/highway_traffic.mp4")
 
 # 3. Object Tracking
 mot = MultiObjectTracking()
-tracker = mot.ocsort()
+tracker = mot.ocsort(min_hits=5, #min_hits mean ID only given when frame detected minimum 5 frame in a row
+                     max_age=10, #max_age mean if existing detection gone in 10 frame then new ID given
+                     iou_threshold=0.3) # iou_threshold mean existing rectangle detection and when go to
+                                        # next frame will check current rectangle is it 30% from prev rectangle
+                                        # if yes then continue with same ID if not then new ID given
 
 while True:
     # Get frame
@@ -43,6 +48,6 @@ while True:
         cv2.putText(img, "{} {}".format(id, class_name), (x, y - 10), cv2.FONT_HERSHEY_PLAIN, 2, od.colors[class_id], 2)
 
     cv2.imshow("img", img)
-    key = cv2.waitKey(1)
+    key = cv2.waitKey(0)
     if key == 27:
         break
