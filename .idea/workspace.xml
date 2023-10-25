@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59e1336c-7f73-4f1e-8e31-5ef61e8a17f7" name="Changes" comment="" />
+    <list default="true" id="59e1336c-7f73-4f1e-8e31-5ef61e8a17f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/yolov8counting-trackingvehicles/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/yolov8counting-trackingvehicles/coco.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/yolov8counting-trackingvehicles/download.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/yolov8counting-trackingvehicles/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/yolov8counting-trackingvehicles/note" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/yolov8counting-trackingvehicles/speed.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/yolov8counting-trackingvehicles/tracker.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,11 +34,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/jannessantoso/work/computer_vision",
+    "last_opened_file_path": "/Users/jannessantoso/work/computer_vision/course_object_detection/personal",
     "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/course_object_detection/personal" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles" />
     </key>
