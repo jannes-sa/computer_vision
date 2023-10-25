@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59e1336c-7f73-4f1e-8e31-5ef61e8a17f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles/note" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles/veh2.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_object_detection/module-3/object-detect-vs-tracking/track_single_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_object_detection/module-3/object-detect-vs-tracking/track_single_object.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles/download.txt" beforeDir="false" afterPath="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles/download.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles/speed.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles/speed.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 1
@@ -28,11 +31,16 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/jannessantoso/work/computer_vision",
     "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/course_object_detection/personal/speed-tracking/yolov8counting-trackingvehicles" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
