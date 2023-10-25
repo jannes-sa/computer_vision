@@ -30,8 +30,8 @@ while True:
             # Draw rectangle bounding the objects detected
             (x, y, w, h) = cv2.boundingRect(cnt)
 
-            cx = (x + x + w) // 2
-            cy = (y + y + h) // 2
+            cx = (x + x + w) // 2 # get center width
+            cy = (y + y + h) // 2 # get center height
 
             center_points.append((cx, cy))
             if index == 0:
