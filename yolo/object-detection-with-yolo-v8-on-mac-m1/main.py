@@ -3,20 +3,20 @@ from ultralytics import YOLO
 import numpy as np
 
 from mapclasses import *
-map_data_cls = mapclasses.create_map_from_file('classes.txt')
+map_data_cls = mapclasses.create_map_from_file('classes/classes_face_emotion.txt')
 
 import torch
 print("apple m1 gpu available : ",torch.backends.mps.is_available()) # this to make sure your hardware can use M1 apple GPU to improve render performance
 
-video_url = "rtsps://echo:fvnW3Q5Yk8L1lRRk2MlJshAD39FeQyJR@wework-1-us.stream.iot-11.com:443/v1/ebff52fb52e74ccfbd4ded/ckp44ai59basofqm3hi0QiP9yridCzBK?signInfo=8Obm-Cqy0aZiVJdp7uLC1jfido0CQcFHxUzpYBidvL5eB6Wxf1ltoThr8xxN0qnfXbdcgOOV7PARY4j9S0QkZ-kdtBrvs57iRRuASEjS3ubyJTd4tYetOlKFU-kDdPzPnlKv4yUyJ53nDVQzV2ggjoeYhSNZJW4ff1w73eIGGv0"
-
-cap = cv2.VideoCapture(video_url)
-# cap = cv2.VideoCapture(1) # open webcam
+#video_url = "rtsps://echo:fvnW3Q5Yk8L1lRRk2MlJshAD39FeQyJR@wework-1-us.stream.iot-11.com:443/v1/ebff52fb52e74ccfbd4ded/ckp44ai59basofqm3hi0QiP9yridCzBK?signInfo=8Obm-Cqy0aZiVJdp7uLC1jfido0CQcFHxUzpYBidvL5eB6Wxf1ltoThr8xxN0qnfXbdcgOOV7PARY4j9S0QkZ-kdtBrvs57iRRuASEjS3ubyJTd4tYetOlKFU-kDdPzPnlKv4yUyJ53nDVQzV2ggjoeYhSNZJW4ff1w73eIGGv0"
+#cap = cv2.VideoCapture(video_url)
+cap = cv2.VideoCapture(1) # open webcam
 if not cap.isOpened():
     print("Error: Couldn't open the webcam / file.")
     exit()
 
-model = YOLO("yolov8m.pt")
+#model = YOLO("yolov8m.pt")
+model = YOLO("/Users/jannessantoso/work/ML-model-results/face-detection/weights/best.pt")
 
 # 3) Save a Video
 
@@ -39,7 +39,7 @@ try:
         # Start : Code for implement model YOLO
 
         # results = model(frame) # for default render using CPU performance is low
-        results = model(frame, device="cpu") # this using M1 Apple for render (note: you can change device into ```mps=m1 apple, cpu=for CPU, 0=for GPU```` or CPU if hardware compatible)
+        results = model(frame, device="mps") # this using M1 Apple for render (note: you can change device into ```mps=m1 apple, cpu=for CPU, 0=for GPU```` or CPU if hardware compatible)
         # print("All Results Model ==>", results) # check result from model
         result = results[0]
         tensorBboxes = result.boxes.xyxy

@@ -46,4 +46,4 @@ ec2-user@ec2-13-250-111-141.ap-southeast-1.compute.amazonaws.com:$vm_dl_path $lo
 
 
 To Copy from EC2 to S3 - ref : https://www.middlewareinventory.com/blog/ec2-s3-copy/
-$ aws s3 cp results.zip s3://machine-learning-model-js
+$ aws s3 cp face_detection_v1.zip s3://machine-learning-model-js/face_detection/
