@@ -8,7 +8,8 @@ od = ObjectDetection("dnn_model/yolov8m.pt")
 od.load_class_names("dnn_model/classes.txt")
 
 # 2. Videocapture
-cap = cv2.VideoCapture("demo/highway.mp4")
+# cap = cv2.VideoCapture("demo/highway.mp4")
+cap = cv2.VideoCapture("../../../../data/highway_traffic.mp4")
 
 # 3. Load tracker
 mot = MultiObjectTracking()
@@ -26,7 +27,7 @@ while True:
         break
 
     # 1. We detect the objects
-    bboxes, class_ids, scores = od.detect(frame, imgsz=640, conf=0.25)
+    bboxes, class_ids, scores = od.detect(frame, imgsz=640, conf=0.25, device="mps")
 
     # 2. We track the objects detected
     bboxes_ids = tracker.update(bboxes, scores, class_ids, frame)
