@@ -24,6 +24,7 @@ cy2 = 80
 offset = 6
 dict_id_with_speed = {}
 distance1 = 25 # meters
+trajectory_by_id = {}
 
 try:
     while True:
@@ -59,11 +60,20 @@ try:
             cv2.circle(cropped_frame, (cx, cy), 5, (0,0,255), -1)
             cv2.putText(cropped_frame, "{} {}".format(track_id, map_data_cls[class_id]), (cx,cy-10), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,0),1)
 
+            # set and draw trajectory
+            if track_id not in trajectory_by_id:
+                trajectory_by_id[track_id] = [(cx, cy)]
+            else:
+                trajectory_by_id[track_id].append((cx, cy))
+            trajectory = trajectory_by_id[track_id]
+            cv2.polylines(cropped_frame, [np.array(trajectory)], False, (15, 225, 215), 2)
+
             if cy1 < (cy + offset-4) and cy1 > (cy - offset-4):
                 now_cy1 = time.time()
                 dict_id_with_speed[track_id] = now_cy1
                 cv2.putText(cropped_frame,"detect",(cx, cy-3), cv2.FONT_HERSHEY_PLAIN, 1, (0,0,255),1)
                 print("touch cy1 => ", track_id, " with time => ", now_cy1)
+
             if track_id in dict_id_with_speed:
 
                 if cy2 < (cy + offset) and cy2 > (cy - offset):
