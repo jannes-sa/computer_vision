@@ -23,7 +23,7 @@ cy1 = 15
 cy2 = 80
 offset = 6
 dict_id_with_speed = {}
-distance1 = 30 # meters
+distance1 = 25 # meters
 
 try:
     while True:
