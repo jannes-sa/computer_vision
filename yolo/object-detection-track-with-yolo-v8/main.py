@@ -34,7 +34,7 @@ try:
 
         cropped_frame = frame[y_start:y_end, x_start:x_end]
 
-        results = model.track(cropped_frame, conf=0.25, iou=0.5, persist=True, device="mps") # this using M1 Apple for render (note: you can change device into ```mps=m1 apple, cpu=for CPU, 0=for GPU```` or CPU if hardware compatible)
+        results = model.track(cropped_frame, imgsz=640 ,conf=0.25, iou=0.5, persist=True, device="mps") # this using M1 Apple for render (note: you can change device into ```mps=m1 apple, cpu=for CPU, 0=for GPU```` or CPU if hardware compatible)
         result = results[0]
         annotated_frame = result.plot()
         tensorBboxes = result.boxes.xyxy
@@ -53,7 +53,7 @@ try:
             x, y, x2, y2 = box
             cx = int((x + x2) / 2)
             cy = int((y + y2) / 2)
-            print("Track ID", track_id, "Box Data", box)
+            # print("Track ID", track_id, "Box Data", box)
             if track_id:
                 vehicles_ids.add(track_id)
 
@@ -66,7 +66,7 @@ try:
             else:
                 trajectory_by_id[track_id].append((cx, cy))
             trajectory = trajectory_by_id[track_id]
-            cv2.polylines(cropped_frame, [np.array(trajectory)], False, (15, 225, 215), 2)
+            cv2.polylines(cropped_frame, [np.array(trajectory[-20:])], False, (15, 225, 215), 2)
 
             if cy1 < (cy + offset-4) and cy1 > (cy - offset-4):
                 now_cy1 = time.time()
