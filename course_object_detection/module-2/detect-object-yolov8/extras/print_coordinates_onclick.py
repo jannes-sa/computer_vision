@@ -10,7 +10,7 @@ def print_coordinates(event, x, y, flags, params):
 cv2.namedWindow("Frame")
 cv2.setMouseCallback("Frame", print_coordinates)
 
-x_start, y_start, x_end, y_end = 1, 164, 637, 356
+x_start, y_start, x_end, y_end = 332, 191, 638, 351
 
 while True:
     ret, frame = cap.read()
