@@ -15,3 +15,6 @@ $ pip install --upgrade torch==2.0.0 torchvision
 3. crop frame (cons => reduce frame)
 4. create custom model
 5. add more datasets to train
+
+# to remove conda env
+$ conda remove --name ENV_NAME --all
