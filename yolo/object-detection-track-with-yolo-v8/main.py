@@ -16,6 +16,18 @@ if not cap.isOpened():
 
 model = YOLO("cnn_model/yolov8m.pt")
 vehicles_ids = set()
+speed1_vehicles_ids = set()
+speed2_vehicles_ids = set()
+
+#) Save a Video
+# Get the width and height of the frames
+frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+print("frame_width : ", frame_width, "frame_height : ",frame_height)
+
+# Define the codec and create a VideoWriter object to save the video
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('./save_video/video.avi',fourcc, 20.0, (frame_width, frame_height))
 
 # coordinate for cropped frame 2
 x_start, y_start, x_end, y_end = 332, 171, 638, 351
@@ -30,6 +42,7 @@ try:
     while True:
         ret, frame = cap.read()
         if not ret:
+            out.release()
             break
 
         cropped_frame = frame[y_start:y_end, x_start:x_end]
@@ -83,6 +96,11 @@ try:
                     time_hours = elapsed1_time/3600 # calculate in hour
                     speed_kmh = distance_km/time_hours
 
+                    if speed_kmh >= 0 and speed_kmh <= 90:
+                        speed1_vehicles_ids.add(track_id)
+                    elif speed_kmh > 90:
+                        speed2_vehicles_ids.add(track_id)
+
                     #a_speed_ms1 = distance1 / elapsed1_time
                     #a_speed_kh1 = a_speed_ms1 * 3.6
 
@@ -91,8 +109,12 @@ try:
 
         # : END Loop Model
 
-        cv2.putText(cropped_frame, "VEHICLES AREA 1: {}".format(len(vehicles_ids)), (400, 50), cv2.FONT_HERSHEY_PLAIN,
+        cv2.putText(frame, "VEHICLES AREA 1: {}".format(len(vehicles_ids)), (400, 30), cv2.FONT_HERSHEY_PLAIN,
+                    1, (15, 225, 215), 1)
+        cv2.putText(frame, "SPEED 0-90 km/h: {}".format(len(speed1_vehicles_ids)), (400, 50), cv2.FONT_HERSHEY_PLAIN,
                    1, (15, 225, 215), 1)
+        cv2.putText(frame, "SPEED > 90 km/h: {}".format(len(speed2_vehicles_ids)), (400, 70), cv2.FONT_HERSHEY_PLAIN,
+                    1, (15, 225, 215), 1)
 
         cv2.line(cropped_frame, (1, cy1), (305, cy1), (255, 255, 255), 1)
         cv2.line(cropped_frame, (1, cy2), (305, cy2), (255, 255, 255), 1)
@@ -100,6 +122,7 @@ try:
         # End : Code for implement model YOLO
         cv2.imshow("Frame Original", frame)
         cv2.imshow("Frame Cropped 2", cropped_frame)
+        out.write(frame)
 
         # cv2.imshow("Anotated Frame", annotated_frame)
         key = cv2.waitKey(1) # 1 mean continue, 0 mean stop per frame
@@ -113,4 +136,5 @@ try:
 except KeyboardInterrupt:
     print("KeyboardInterrupt detected, exiting...")
     cap.release()
+    out.release()
     cv2.destroyAllWindows()
